@@ -15,9 +15,7 @@ const generateNewWallet = () => {
     //Wallet Address = 
     const wallet = ethers.Wallet.createRandom();
 
-    console.log("address", wallet.address);
-    console.log("mnenomic", wallet.mnemonic.phrase);
-    console.log("private Key", wallet.privateKey);
+
 };
 
 const getSigner = (mainnet = false) => {
@@ -28,11 +26,11 @@ const getSigner = (mainnet = false) => {
     );
 };
 
-//const provider = getProvider();
-//const signer = getSigner();
-//console.log("signer", (await signer.getBalance()).toString());
-//console.log("Provider", await provider.getNetwork());
 
-//generateNewWallet();
+// const provider = getProvider();
+const signer = getSigner();
+// console.log("Provider", await provider.getNetwork());
+
+generateNewWallet();
 
 export {getSigner, getProvider, generateNewWallet};
