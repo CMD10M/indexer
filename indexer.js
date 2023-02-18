@@ -41,6 +41,24 @@ app.get('/minteditems', async (req, res) => {
          });
     ;
 
+app.get('/allitems', async (req, res) => {
+
+    const totalTokens = await contract.totalSupply();
+    let tokenURIs = [];
+    for (let i = 0; i < totalTokens; i++) {
+      const tokenId = await contract.tokenByIndex(i);
+      const tokenURI = await contract.tokenURI(tokenId);
+      const match = tokenURI.match(/^data:application\/json;base64,(.+)$/);
+      if (match) {
+        const jsonManifestString = atob(match[1]);
+        const parsedTokenURI = JSON.parse(jsonManifestString);
+        tokenURIs.push(parsedTokenURI);
+      }
+    }
+    res.json(tokenURIs);
+
+});
+
 if (fs.existsSync("server.key") && fs.existsSync("server.cert")) {
     https
         .createServer(
