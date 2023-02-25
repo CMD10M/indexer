@@ -100,7 +100,7 @@ app.get('/balloon', (req, res) => {
     console.log("length: ", length);
 
     const tokensMetadata = [];
-    let startIndex = length - 1 - perPage * (page - 1);
+    let startIndex = length - perPage * (page - 1);
     console.log("startIndex: ", startIndex);
     for (let tokenIndex = startIndex; tokenIndex > startIndex - perPage && tokenIndex >= 0; tokenIndex--) {
         tokensMetadata.push({ id: tokenIndex, ...tokens[tokenIndex] });
