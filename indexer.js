@@ -59,24 +59,9 @@ app.get('/allitems', async (req, res) => {
 
 });
 
-if (fs.existsSync("server.key") && fs.existsSync("server.cert")) {
-    https
-        .createServer(
-            {
-                key: fs.readFileSync("server.key"),
-                cert: fs.readFileSync("server.cert"),
-            },
-            app
-        )
-        .listen(port, () => {
-            console.log("HTTPS Listening: "+port);
-        });
-} else {
-    var server = app.listen(port, "0.0.0.0", function () {
-        console.log("HTTP Listening on port:", server.address().port);
-    });
-}
+
+var server = app.listen(port, "0.0.0.0");
+
 
 
 console.log("🎛   http://localhost:"+port+"/")
-
