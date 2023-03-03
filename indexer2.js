@@ -9,7 +9,7 @@ import { Buffer } from "buffer";
 
 const provider = getProvider();
 const port = 32889;
-const contractAddress = "0x6c00f8966f37Ac08B4F9D9A6CA895a268f70239b"
+const contractAddress = "0x261Bf332DFDb49b2321d930EEAd51C81B2B76fbd"
 
 
 const startBlock = 635130;
@@ -38,7 +38,7 @@ setInterval(async () => {
 
     const startTime = Date.now()
 
-    console.log("📡 polling for new optimism blocks...")
+    console.log("📡 polling for new polyon blocks...")
 
 
     const currentBlock = await provider.getBlockNumber()
